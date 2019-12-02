@@ -1,3 +1,4 @@
+// 3.配置是否为application
 if (MEMBER_IS_APPLICATION.toBoolean()) {
     apply plugin: 'com.android.application'
 } else {
@@ -11,6 +12,7 @@ android {
 
 
     defaultConfig {
+//        3.1 配置 applicationId
         if (MEMBER_IS_APPLICATION.toBoolean()) {//只有是application的时候 才会有id
             applicationId "com.example.member"
 
@@ -29,7 +31,8 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-//配置清单文件
+
+//3.2 配置清单文件
     sourceSets {
         main {
             if (MEMBER_IS_APPLICATION.toBoolean()) {

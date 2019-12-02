@@ -31,7 +31,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-//    引入其他模块 不是application才引入
+//   4. 引入其他模块 不是application才引入
     if (!MEMBER_IS_APPLICATION){
         implementation project('member')
     }
