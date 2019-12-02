@@ -1,6 +1,6 @@
-if (MEMBER_IS_APPLICATION.toBoolean()){
+if (MEMBER_IS_APPLICATION.toBoolean()) {
     apply plugin: 'com.android.application'
-}else {
+} else {
     apply plugin: 'com.android.library'
 }
 
@@ -11,7 +11,7 @@ android {
 
 
     defaultConfig {
-        if (MEMBER_IS_APPLICATION.toBoolean()){//只有是application的时候 才会有id
+        if (MEMBER_IS_APPLICATION.toBoolean()) {//只有是application的时候 才会有id
             applicationId "com.example.member"
 
         }
@@ -31,10 +31,12 @@ android {
     }
 //配置清单文件
     sourceSets {
-        if (MEMBER_IS_APPLICATION.toBoolean()){
-            manifest( 'src/main/AndroidManifest.xml')
-        }else {
-            manifest('src/main/manifest/AndroidManifest.xml')
+        main {
+            if (MEMBER_IS_APPLICATION.toBoolean()) {
+                manifest.srcFile('src/main/AndroidManifest.xml')
+            } else {
+                manifest.srcFile('src/main/manifest/AndroidManifest.xml')
+            }
         }
     }
 
