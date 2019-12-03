@@ -53,4 +53,8 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation project(path: ':route')
+    implementation project(path: ':annotations')
+    //    用annotationProcessor 表示引入的是一个注解处理器而不是普通的library
+    annotationProcessor project(path: ':annotations_compiler')
 }

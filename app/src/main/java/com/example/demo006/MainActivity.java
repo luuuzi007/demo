@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.annotations.BindPath;
+
+//@BindPath("main/main")
 public class MainActivity extends AppCompatActivity {
 
     @Override
