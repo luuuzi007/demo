@@ -5,6 +5,7 @@ import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import java.util.HashMap;
 
@@ -12,6 +13,7 @@ import java.util.HashMap;
  * 模块之间跳转的类
  */
 public class Aroute {
+    private String tag="Aroute";
     //1.装载所有activity的class的对象集合
     private HashMap<String,Class<?extends Activity>> activitylsit;
     private static Aroute aroute=new Aroute();
@@ -22,7 +24,7 @@ public class Aroute {
     public static Aroute getInstance(){
         return aroute;
     }
-    private void init(Application application){
+    public void init(Application application){
         this.context=application;
     }
     /**
@@ -38,6 +40,7 @@ public class Aroute {
     }
     public void jumpActivity(String path, Bundle bundle){
         Class<? extends Activity> aClass = activitylsit.get(path);
+        Log.i(tag,"aclass:"+aClass);
         if (aClass==null){
             return;
         }

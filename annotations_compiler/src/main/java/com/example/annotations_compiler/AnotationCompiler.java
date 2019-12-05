@@ -69,7 +69,8 @@ public class AnotationCompiler extends AbstractProcessor {
      */
     @Override
     public boolean process(Set<? extends TypeElement> set, RoundEnvironment roundEnvironment) {
-        System.out.println("错误开始写入");
+
+        System.out.println("开始写入");
         //拿到的是这个模块的所有的BindPath的类节点
         Set<? extends Element> elements = roundEnvironment.getElementsAnnotatedWith(BindPath.class);//去整个app里面去找BindPath注解的节点()
         Map<String, String> map = new HashMap<>();
@@ -88,7 +89,7 @@ public class AnotationCompiler extends AbstractProcessor {
             String activityName = "ActivityUtil" + System.currentTimeMillis();
             try {
                 //创建文件
-                JavaFileObject javaFileObject = filer.createSourceFile("com.example.demo006." + activityName);
+                JavaFileObject javaFileObject = filer.createSourceFile("com.example.demo006." + activityName);//文件名
                 writer = javaFileObject.openWriter();
                 writer.write("package com.example.demo006.util;\n" +
                         "\n" +
@@ -104,7 +105,7 @@ public class AnotationCompiler extends AbstractProcessor {
                 while (iterator.hasNext()) {
                     String path = iterator.next();
                     String value = map.get(path);
-                    writer.write("Aroute.getInstance().putActivity(\"" + path + "\", " + value + ");\n");
+                    writer.write("Aroute.getInstance().putActivity(\"" + path + "\", " + value + ".class);\n");
                 }
                 writer.write("}\n}");
             } catch (IOException e) {

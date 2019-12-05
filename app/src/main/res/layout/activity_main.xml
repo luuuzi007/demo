@@ -12,6 +12,11 @@
     android:layout_height="40dp"
     android:text="屏幕适配"
     android:gravity="center"/>
-
+    <TextView
+        android:id="@+id/tvText2"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="组件化"
+        android:gravity="center"/>
 
 </LinearLayout>
