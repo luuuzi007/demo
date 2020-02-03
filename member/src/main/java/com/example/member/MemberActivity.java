@@ -7,7 +7,7 @@ import android.view.View;
 
 import com.example.annotations.BindPath;
 import com.example.route.Aroute;
-//@BindPath("member/member")
+@BindPath("member/member")
 public class MemberActivity extends AppCompatActivity {
 
     @Override
