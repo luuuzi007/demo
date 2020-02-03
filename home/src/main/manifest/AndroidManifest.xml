@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.home">
+<!--当不是一个Application的时候使用当前清单文件,既不需要Application-->
+</manifest>
