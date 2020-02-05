@@ -6,10 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.annotations.BindPath;
-import com.example.route.Aroute;
+//import com.example.annotations.BindPath;
+//import com.example.route.Aroute;
 
-@BindPath("main/main")
+//@BindPath("main/main")
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -25,7 +25,8 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.tvText2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Aroute.getInstance().jumpActivity("member/member",null);
+//                Aroute.getInstance().jumpActivity("member/member",null);
+                startActivity(new Intent(MainActivity.this,ElementActivity.class));
             }
         });
     }

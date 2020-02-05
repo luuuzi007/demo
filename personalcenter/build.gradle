@@ -1,18 +1,35 @@
-apply plugin: 'com.android.application'
+// 1.1 配置是否为application
+if (PERSONALCENTER_IS_APPLICATION.toBoolean()) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.3"
+    //配置统一的版本
+    compileSdkVersion COMPILER_SDK_VERSION.toInteger()
+    buildToolsVersion BUILD_TOOLS_VERSION
 
 
     defaultConfig {
-        applicationId "com.example.personalcenter"
-        minSdkVersion 19
-        targetSdkVersion 29
+        if (PERSONALCENTER_IS_APPLICATION.toBoolean()) {
+            applicationId "com.example.personalcenter"
+        }
+
+        //配置统一的版本
+        minSdkVersion MIN_SDK_VERSION.toInteger()
+        targetSdkVersion TAR_SDK_BERSION.toInteger()
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        //arouter配置1
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [moduleName: project.getName()]
+            }
+        }
     }
 
     buildTypes {
@@ -21,11 +38,26 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
+//1.3 配置清单文件
+    sourceSets {
+        main {
+            if (PERSONALCENTER_IS_APPLICATION.toBoolean()) {
+                //单独运行
+                manifest.srcFile('src/main/AndroidManifest.xml')
+            } else {
+                //不是单独运行
+                manifest.srcFile('src/main/manifest/AndroidManifest.xml')
+            }
+        }
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //引入公共的library
+    implementation project(path:':commonbase')
+    //arouter配置2
+    annotationProcessor 'com.alibaba:arouter-compiler:1.1.4'
 
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'

@@ -1,15 +1,23 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 29
+    //配置统一的版本
+    compileSdkVersion COMPILER_SDK_VERSION.toInteger()
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.example.demo006"
-        minSdkVersion 19
-        targetSdkVersion 29
+        //配置统一的版本
+        minSdkVersion MIN_SDK_VERSION.toInteger()
+        targetSdkVersion TAR_SDK_BERSION.toInteger()
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+//        arouter配置
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [moduleName: project.getName()]
+            }
+        }
     }
     buildTypes {
         release {
@@ -28,21 +36,23 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    implementation project(path: ':route')
-    implementation project(path: ':annotations')
+
 //    用annotationProcessor 表示引入的是一个注解处理器而不是普通的library
-    annotationProcessor project(path: ':annotations_compiler')
+//    annotationProcessor project(path: ':annotations_compiler')
     //引入公共的library
     implementation project(path:':commonbase')
 
+    annotationProcessor 'com.alibaba:arouter-compiler:1.1.4' // 版本号替换
 
 //   4. 引入其他模块 不是application才引入
-    if (!MEMBER_IS_APPLICATION){
-        implementation project('member')
+    //引入home模块
+    if (!HOME_IS_APPLICATION.toBoolean()){
+        implementation project(path:':home')
     }
-    if (!HOME_IS_APPLICATION){
-        implementation project('home')
+    //引入个人中心模块
+    if (!PERSONALCENTER_IS_APPLICATION.toBoolean()){
+        implementation project(path: ':personalcenter')
     }
 }

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_home"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="跳转至home模块"
+        android:gravity="center"/>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_person"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="跳转至个人中心模块"
+        android:gravity="center"/>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_home_params"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="带参数跳转"
+        android:gravity="center"/>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_home_url"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="url跳转"
+        android:gravity="center"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_home_result"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="跳转并返回结果"
+        android:gravity="center"/>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_home_intercept"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="拦截器"
+        android:gravity="center"/>
+</LinearLayout>

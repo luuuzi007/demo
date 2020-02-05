@@ -8,13 +8,13 @@ if (HOME_IS_APPLICATION.toBoolean()) {
 android {
     //配置统一的版本
     compileSdkVersion COMPILER_SDK_VERSION.toInteger()
-    buildToolsVersion "29.0.2"
+    buildToolsVersion BUILD_TOOLS_VERSION
 
 
     defaultConfig {
         //        1.2 配置 applicationId
         if (HOME_IS_APPLICATION.toBoolean()) {
-            applicationId "com.example.home"
+            applicationId "cn.home.home"
         }
         //配置统一的版本
         minSdkVersion MIN_SDK_VERSION.toInteger()
@@ -23,6 +23,12 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        //        arouter配置
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [moduleName: project.getName()]
+            }
+        }
     }
 
     buildTypes {
@@ -35,8 +41,10 @@ android {
     sourceSets {
         main {
             if (HOME_IS_APPLICATION.toBoolean()) {
+                //单独运行
                 manifest.srcFile('src/main/AndroidManifest.xml')
             } else {
+                //不是单独运行
                 manifest.srcFile('src/main/manifest/AndroidManifest.xml')
             }
         }
@@ -45,6 +53,11 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    //引入公共的library
+    implementation project(path:':commonbase')
+//    router配置
+    annotationProcessor 'com.alibaba:arouter-compiler:1.1.4'
 
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'

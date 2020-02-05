@@ -1,2 +1,2 @@
-include ':app', ':member', ':route', ':annotations', ':annotations_compiler', ':chat', ':contract', ':find', ':mine', ':common', ':home', ':personalcenter', ':shoppingcar', ':commonbase'
+include ':app', ':personalcenter', ':shoppingcar', ':commonbase', ':home'
 rootProject.name='Demo006'
