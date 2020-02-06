@@ -20,14 +20,14 @@ public class LoginInterceptor implements IInterceptor {
     public void process(Postcard postcard, InterceptorCallback callback) {
         String uri = postcard.getExtras().getString("uri");
         //判断是否携带了key为uri的参数，没有携带则拦截,带了则直接进行下一步
-        if (TextUtils.isEmpty(uri)) {
-            Log.i(tag, "uri为空，被拦截");
-            //会走回调的onInterrupt()方法
-            callback.onInterrupt(null);//抛异常,觉得有问题，中断路由流程
-        } else {
-            Log.i(tag, "uri不为空，执行下一步");
+//        if (TextUtils.isEmpty(uri)) {
+//            Log.i(tag, "uri为空，被拦截");
+//            //会走回调的onInterrupt()方法
+//            callback.onInterrupt(null);//抛异常,觉得有问题，中断路由流程
+//        } else {
+//            Log.i(tag, "uri不为空，执行下一步");
             callback.onContinue(postcard);// 处理完成，交还控制权
-        }
+//        }
         // 以上两种至少需要调用其中一种，否则不会继续路由
     }
 
